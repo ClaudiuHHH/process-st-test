@@ -1,3 +1,1 @@
-
-var testApp = angular.module('testApp', ['wistia.uploader']);
-
+var testApp = angular.module('testApp', ['wistiaUploaderModule']);
