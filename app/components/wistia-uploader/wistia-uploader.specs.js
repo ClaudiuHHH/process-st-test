@@ -22,8 +22,7 @@ describe('testModule module', function () {
         var scope = $rootScope.$new();
         spyOn(scope, "$on");
         var controller = $controller('wistiaUploaderCtrl', { $scope: scope });
-        console.dir(controller);
-        // spyOn(controller, "hadleFileuploAddOneEvent");
+        
         var data = {
             hashed_id: '123',
             name: 'Test video',
@@ -31,7 +30,6 @@ describe('testModule module', function () {
         scope.$broadcast('fileuploaddone', data);
         expect(scope.$on).toHaveBeenCalled();
         expect(scope.$on).toHaveBeenCalledTimes(1);
-        //expect(controller.hadleFileuploAddOneEvent).toHaveBeenCalled();
     }));
 
 });

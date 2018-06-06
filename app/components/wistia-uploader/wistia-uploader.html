@@ -1,19 +1,18 @@
-<form id="fileupload"  method="POST" enctype="multipart/form-data" file-upload="options" ng-class="{'fileupload-processing': processing() || loadingFiles}">
+<form id="fileupload" method="POST" enctype="multipart/form-data" file-upload="options" ng-class="{'fileupload-processing': processing() || loadingFiles}">
     <div class="row fileupload-buttonbar">
         <div class="col-md-4">
-            
+
             <h3>Upload new file</h3>
-            <input type="hidden" name="api_password" ng-value="options.apiPassword" >
-            <span class="btn btn-success fileinput-button" ng-disabled="active()" >
+            <input type="hidden" name="api_password" ng-value="options.apiPassword">
+            <span class="btn btn-success fileinput-button" ng-disabled="active()">
                 <i class="glyphicon glyphicon-plus"></i>
                 <span>Select file</span>
-                <input type="file" name="files[]" ng-disabled="disabled" >
-                
+                <input type="file" name="files[]" ng-disabled="disabled">
+
             </span>
-           
+
             <div ng-class="{ 'm-4': true, fade: true, in: active()}">
                 uploading ...
-                <!-- The global progress bar -->
                 <div class="progress progress-striped active" file-upload-progress="progress()">
                     <div class="progress-bar progress-bar-success" ng-style="{width: num + '%'}"></div>
                 </div>
@@ -23,16 +22,8 @@
         <div class="col-md-8">
             <div ng-if="gotResult()">
                 <h3>{{uploadedVideo.name}}</h3>
-             
-                
-                
                 <div class="wistia_embed wistia_async_{{uploadedVideo.hashed_id}} videoFoam=true" style="width:640px;height:360px;">&nbsp;</div>
-              
-                
             </div>
         </div>
     </div>
-
-
-
 </form>
