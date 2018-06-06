@@ -1,5 +1,5 @@
 {
-  "name": "wistia.uploader",
+  "name": "wistiaUploaderModule",
   "version": "0.0.0",
   "devDependencies": {
     "angular": "~1.7.0",
