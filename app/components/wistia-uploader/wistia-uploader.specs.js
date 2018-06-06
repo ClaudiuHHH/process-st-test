@@ -1,67 +1,37 @@
 'use strict';
-
-
 describe('testModule module', function () {
-    var rootScope;
-    var scope;
-    var controller;
-    var spyOn1;
+
     beforeEach(function () {
         angular.mock.module('wistiaUploaderModule');
     });
-    beforeEach(inject(function ($controller, $rootScope) {
-        rootScope = $rootScope;
-        scope = $rootScope.$new();
-        spyOn1=spyOn(scope, "$on") ;
-        controller = $controller('wistiaUploaderCtrl', { $scope: scope });
+
+    it('should have valid controller', inject(function ($controller, $rootScope) {
+
+        var scope = $rootScope.$new();
+        var controller = $controller('wistiaUploaderCtrl', { $scope: scope });
+        expect(controller).toBeDefined();
     }));
 
-    it('should have controller', function () {
-
+    it('should have uploadedVideo undefined', inject(function ($controller, $rootScope) {
+        var scope = $rootScope.$new();
+        var controller = $controller('wistiaUploaderCtrl', { $scope: scope });
         expect(scope.uploadedVideo).not.toBeDefined();
-        expect(controller).toBeDefined();
-    });
+    }));
 
-    it('should not uploadedVideo undefined', function () {
-        expect(scope.uploadedVideo).not.toBeDefined();
-    });
-
-    it('should listen for events', function () {
+    it('should listen for fileaddoneevent', inject(function ($controller, $rootScope) {
+        var scope = $rootScope.$new();
+        spyOn(scope, "$on");
+        var controller = $controller('wistiaUploaderCtrl', { $scope: scope });
+        console.dir(controller);
+        // spyOn(controller, "hadleFileuploAddOneEvent");
         var data = {
             hashed_id: '123',
-            name:'Test video',
+            name: 'Test video',
         };
         scope.$broadcast('fileuploaddone', data);
         expect(scope.$on).toHaveBeenCalled();
         expect(scope.$on).toHaveBeenCalledTimes(1);
-        expect(scope.$on).toHaveBeenCalledWith('fileuploaddone',function (event,args) {
-
-        });
-    });
-
-
-
-
+        //expect(controller.hadleFileuploAddOneEvent).toHaveBeenCalled();
+    }));
 
 });
-
-// describe('testModule module', function () {
-
-//     beforeEach(function () {
-//         angular.mock.module('testModule');
-//     });
-
-//     it('should format the name', inject(($controller,$rootScope) => {
-//         const scope= $rootScope.$new();
-//         // const name = 'John Doe';
-//         const controller = $controller('testCtrl',{ $scope: scope });
-//         console.dir(scope);
-
-//         expect(controller).toBeDefined();
-//     }));
-
-
-
-
-
-// });

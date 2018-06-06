@@ -8,7 +8,6 @@ angular.module('wistiaUploaderModule', [
         '$scope',
         function ($scope) {
 
-
             $scope.uploadedVideo = undefined
 
             $scope.options = {
@@ -16,8 +15,6 @@ angular.module('wistiaUploaderModule', [
                 url: url,
                 autoUpload: true,
             };
-
-
 
             $scope.gotResult = function () {
                 return $scope.uploadedVideo ? true : false;
@@ -28,7 +25,7 @@ angular.module('wistiaUploaderModule', [
             };
             $scope.$on('fileuploaddone', hadleFileuploAddOneEvent);
 
-            var hadleFileuploAddOneEvent = function (event, args) {
+            function hadleFileuploAddOneEvent(event, args) {
                 if (args.result) {
                     $scope.setResult(args.result);
                 }
